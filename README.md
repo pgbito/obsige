@@ -14,7 +14,9 @@ interfaz clean, tarjetas redondeadas y checklist para marcar mutuals / no mutual
 
 ---
 
-## cómo obtener el `sessId` (mini tutorial con cookieeditor)
+## credenciales
+
+### cómo obtener el `sessId` (mini tutorial con cookieeditor)
 
 1. abrí chrome (o firefox) y entrá a instagram.com y logueate con tu cuenta.
 2. instalá la extensión **CookieEditor** (o cualquier editor de cookies).

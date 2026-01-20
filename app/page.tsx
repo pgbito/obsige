@@ -32,7 +32,7 @@ export default function Home() {
       setData(json)
     } catch (err) {
       console.error(err)
-      alert("error al obtener datos")
+
     } finally {
       setLoading(false)
     }
