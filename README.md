@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# obsige
 
-## Getting Started
+app web (nextjs + shadcn/ui) hecho por pgbito, para ver quién te sigue y quién no en instagram.  
+interfaz clean, tarjetas redondeadas y checklist para marcar mutuals / no mutuals.
 
-First, run the development server:
+---
+
+## features
+
+- buscar usuario: consulta el servidor de Instagram para conseguir seguidores (si no pones sessid tu cuenta debe de ser publica)
+- mostrar `mutuals` y `nomutuals`
+
+- pantalla de configuración para guardar `sessId` (si no se pone, se usa el default del servidor)
+
+---
+
+## cómo obtener el `sessId` (mini tutorial con cookieeditor)
+
+1. abrí chrome (o firefox) y entrá a instagram.com y logueate con tu cuenta.
+2. instalá la extensión **CookieEditor** (o cualquier editor de cookies).
+3. abrí la extensión mientras estás en `https://www.instagram.com`.
+4. buscá la cookie llamada `sessionid`.
+5. el valor de esa cookie es tu `sessId`. copiálo.
+   - ejemplo: `abcd1234efgh...`
+6. pegalo en la app: menú `configuración` -> campo `sessId` -> guardar.
+7. ahora la app hará las consultas usando ese sessId (si tu endpoint lo requiere).
+
+> nota de seguridad: no compartas tu `sessionid` públicamente.
+
+---
+
+## instalación (local)
+
+requisitos: node >= 18, npm
 
 ```bash
+git clone https://github.com/tuusuario/insta-consulta.git
+cd insta-consulta
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# abrir http://localhost:3000
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
