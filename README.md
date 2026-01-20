@@ -55,7 +55,7 @@ no se almacena en servidores ni bases de datos, solo queda guardado en tu navega
 requisitos: node >= 18, npm
 
 ```bash
-git clone https://github.com/tuusuario/insta-consulta.git
+git clone https://github.com/pgbito/obsige
 cd insta-consulta
 npm install
 npm run dev
