@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+/* import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -31,4 +31,21 @@ export default function RootLayout({
       </body>
     </html>
   );
+}
+ */
+import Link from "next/link"
+import "./globals.css"
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="es">
+      <body className="bg-gradient-to-b from-white to-gray-100 min-h-screen">
+        <nav className="flex justify-center gap-6 py-4 shadow-sm bg-white sticky top-0">
+          <Link href="/" className="font-semibold hover:text-blue-600">consulta</Link>
+          <Link href="/settings" className="font-semibold hover:text-blue-600">configuración</Link>
+        </nav>
+        <main className="flex justify-center py-10">{children}</main>
+      </body>
+    </html>
+  )
 }

@@ -1,0 +1,1 @@
+ssh -i C:\Users\pgbit\Downloads\ssh-keys.key opc@40.233.20.225

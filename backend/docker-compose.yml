@@ -1,0 +1,13 @@
+services:
+  instagram-api:
+    build: .
+    container_name: ig_scraper
+    restart: always # Si se cae o reinicias la PC, vuelve a arrancar solo
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mapeamos la carpeta de tu Windows a la del contenedor
+      # Izquierda: Tu Windows | Derecha: El Docker
+      - ./cache_images:/app/cache_images
+      - ./output_json:/app/output_json
+      - ./cookies.json:/app/cookies.json
