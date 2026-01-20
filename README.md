@@ -5,12 +5,31 @@ interfaz clean, tarjetas redondeadas y checklist para marcar mutuals / no mutual
 
 ---
 
+**⚠️ seguridad y transparencia ante todo**
+
+esta app **no guarda, almacena ni comparte credenciales de instagram**.  
+el `sessId` que se usa proviene de tu propia sesión de instagram y **solo sirve para permitir que la app consulte tus listas de seguidores y seguidos**.  
+no se almacena en servidores ni bases de datos, solo queda guardado en tu navegador (localStorage).
+
+> ⚠️ **importante sobre el sessId:**
+>
+> - el `sessId` puede **vencer o dejar de funcionar** por varias razones:
+>   - si el usuario a consultar tiene **demasiados seguidores o seguidos**, instagram puede limitar temporalmente las solicitudes.
+>   - si hacés **muchas consultas seguidas** con el mismo `sessId`, instagram puede **ratelimitar o desactivar temporalmente tu sesión** por detectar actividad automatizada.
+>   - los `sessId` expiran naturalmente después de unos días o si cerrás sesión en instagram.
+> - un `sessId` **no da acceso a tus mensajes, publicaciones, ni datos privados**, solo permite obtener información pública del perfil (seguidores, seguidos y biografía).
+> - la app **no ejecuta acciones en tu cuenta**, solo consulta información visible públicamente.
+
+---
+
 ## features
 
 - buscar usuario: consulta el servidor de Instagram para conseguir seguidores (si no pones sessid tu cuenta debe de ser publica)
 - mostrar `mutuals` y `nomutuals`
 
 - pantalla de configuración para guardar `sessId` (si no se pone, se usa el default del servidor)
+
+---
 
 ---
 
