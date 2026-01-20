@@ -39,11 +39,27 @@ import "./globals.css"
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className="bg-gradient-to-b from-white to-gray-100 min-h-screen">
-        <nav className="flex justify-center gap-6 py-4 shadow-sm bg-white sticky top-0">
+      <body className="bg-gradient-to-b from-white to-gray-100 min-h-screen relative">
+        <nav className="flex justify-center gap-6 py-4 shadow-sm bg-white sticky top-0 z-10">
           <Link href="/" className="font-semibold hover:text-blue-600">consulta</Link>
           <Link href="/settings" className="font-semibold hover:text-blue-600">configuración</Link>
         </nav>
+
+        {/* sello personal */}
+       <div className="fixed top-4 right-4 z-50 bg-white/80 backdrop-blur-md border border-gray-200 px-3 py-2 rounded-xl shadow-md text-[11px] text-gray-600">
+  <p>
+    hecho con 💖 por <strong>pgbito</strong>
+  </p>
+  <Link
+    href="https://github.com/pgbito/obsige"
+    target="_blank"
+    className="text-blue-500 hover:underline"
+  >
+    open source • libre
+  </Link>
+</div>
+
+
         <main className="flex justify-center py-10">{children}</main>
       </body>
     </html>

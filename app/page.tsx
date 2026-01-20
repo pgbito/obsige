@@ -4,11 +4,19 @@ import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardContent } from "@/components/ui/card"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
 const API_URL = "40.233.20.225:8000"
 export default function Home() {
   const [user, setUser] = useState("")
   const [data, setData] = useState<any>(null)
   const [loading, setLoading] = useState(false)
+  const [showSessModal, setShowSessModal] = useState(false)
 
   const fetchInfo = async () => {
     setLoading(true)
@@ -16,6 +24,10 @@ export default function Home() {
     try {
       const sessId = localStorage.getItem("sessId") || ""
       const res = await fetch(`http://${API_URL}/consulta?user=${user}&sessId=${sessId}`)
+      if (res.status === 404) {
+        setShowSessModal(true)
+        throw new Error("sessId vencido o inválido")
+      }
       const json = await res.json()
       setData(json)
     } catch (err) {
@@ -29,7 +41,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center gap-6">
       <Card className="w-[360px] shadow-lg rounded-2xl p-6">
-        <CardHeader className="text-center text-xl font-semibold">consulta de usuario</CardHeader>
+        <CardHeader className="text-center text-xl font-semibold">OBSIG - consulta de usuario ®️</CardHeader>
         <CardContent className="flex flex-col gap-4">
           <Input
             placeholder="@usuario"
@@ -37,19 +49,38 @@ export default function Home() {
             onChange={(e) => setUser(e.target.value)}
           />
           <Button onClick={fetchInfo} disabled={loading || !user}>
-            {loading ? "buscando..." : "buscar"}
+            {loading ? "😴 buscando..." : "🔎 buscar"}
           </Button>
         </CardContent>
       </Card>
 
       {data && (
         <div className="w-[360px] flex flex-col gap-6">
-          <Section title="No Mutuals (rogados😴)" items={data.nomutuals} />
+          <Section title="No Mutuals (😴 rogados)" items={data.nomutuals} />
           <Section title="Mutuals" items={data.mutuals} />
           
         </div>
-      )}
+      )}<Dialog open={showSessModal} onOpenChange={setShowSessModal}>
+        <DialogContent className="rounded-2xl">
+          <DialogHeader>
+            <DialogTitle>sessid inválido o vencido 😕</DialogTitle>
+            <DialogDescription>
+              hey, parece que tu sessId ya no sirve. abrí la pestaña de configuración y pegá uno nuevo.
+            </DialogDescription>
+          </DialogHeader>
+          <Button
+            className="mt-3"
+            onClick={() => {
+              setShowSessModal(false)
+              window.location.href = "/settings"
+            }}
+          >
+            ir a configuración
+          </Button>
+        </DialogContent>
+      </Dialog>
     </div>
+    
   )
 }
 
